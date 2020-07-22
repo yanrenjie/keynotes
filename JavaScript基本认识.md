@@ -38,7 +38,7 @@
 ```
 
 ### 数组
-```
+```JavaScript
         // 创建一个数组，
         var arr1 = new Array()
         var arr2 = []
@@ -70,7 +70,7 @@
 
 ### 函数
 
-```javascript
+```JavaScript
 // 可以返回值，也可不返回值
 function compute(paramter1, parameter2) {
 	 return paramter1 + parameter2
