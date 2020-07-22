@@ -70,7 +70,7 @@
 
 ### 函数
 
-```
+```javascript
 // 可以返回值，也可不返回值
 function compute(paramter1, parameter2) {
 	 return paramter1 + parameter2
