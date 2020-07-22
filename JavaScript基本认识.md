@@ -223,3 +223,142 @@ func();
 </html>
 
 ```
+
+#### 闭包执行，Dom操作，切换图片
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="fei/fei0.jpg" id="fei" alt="刘亦菲" width="300" height="400">
+    <br>
+    <input type="button" class="pre" value="上一张">
+    <input type="button" class="next" value="下一张">
+
+    <script>
+        // 闭包执行，放置外界修改
+        /*
+        (function() {
+        
+        })();
+        * */
+        (function () {
+            var idx = 0;
+            // 获取需要的标签元素
+            var img = document.getElementById('fei');
+            var pre = document.getElementsByClassName('pre')[0];
+            var next = document.getElementsByClassName('next')[0];
+
+            pre.onclick = function () {
+                idx--;
+                if (idx == -1) idx = 8;
+                updateImage();
+            }
+
+            next.onclick = function () {
+                idx++;
+                if (idx ==9) idx = 0;
+                updateImage();
+            }
+
+            function updateImage() {
+                var imagename = 'fei/fei' + idx + '.jpg';
+                img.src = imagename;
+            }
+        })();
+
+    </script>
+</body>
+</html>
+
+```
+
+
+### 增删改查操作
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>增删改查操作</title>
+    <style>
+        div {
+            float: left;
+            margin: 50px;
+            width: 200px;
+            height: 200px;
+            background: cyan;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <!--    增加-->
+    <div id="create">
+        <input id="createBtn" type="button" value="添加">
+    </div>
+    <!--        删除-->
+    <div id="delete">
+        <input id="deleteBtn" type="button" value="删除">
+        <img id="deleteImage" src="fei/fei1.jpg" alt="">
+    </div>
+    <!--更新-->
+    <div id="update">
+        <input id="updateBtn" type="button" value="修改">
+        <img id="updateImage" src="fei/fei1.jpg" alt="">
+    </div>
+    <!--查询-->
+    <div id="read">
+        <input id="readBtn" type="button" value="查询">
+    </div>
+
+    <script>
+        // 在这里实现增删改查操作
+        (function () {
+            // 先获取到要操作的对应的元素div元素
+            var createDiv = document.getElementById('create');
+            var deleteDiv = document.getElementById('delete');
+            var updateDiv = document.getElementById('update');
+            var readDiv = document.getElementById('read');
+
+            // 获取按钮元素
+            var createBtn = document.getElementById('createBtn');
+            var deleteBtn  = document.getElementById('deleteBtn');
+            var updateBtn  = document.getElementById('updateBtn');
+            var readBtn  = document.getElementById('readBtn');
+
+            // 动态添加一个元素， 如果直接通过document.write('这里的文字会直接写入到body里面');
+            createBtn.onclick = function () {
+                // 先创建一个img元素
+                var tempimage = document.createElement('img');
+                // 赋值图片
+                tempimage.src = 'fei/fei0.jpg';
+                createDiv.appendChild(tempimage)
+            }
+
+            // 动态删除一个元素
+            deleteBtn.onclick = function () {
+                var deleteImg = document.getElementById('deleteImage');
+                deleteImg.remove();
+            }
+
+            // 更改元素内容
+            updateBtn.onclick = function () {
+                var updateImage = document.getElementById('updateImage');
+                updateImage.src = 'fei/fei3.jpg';
+            }
+
+            // 查询
+            readBtn.onclick = function () {
+                var read = document.getElementById('read');
+                console.log(read.childNodes);
+            }
+        })();
+    </script>
+</body>
+</html>
+```
