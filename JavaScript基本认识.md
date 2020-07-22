@@ -134,3 +134,92 @@ func();
         person.run(18, '上海');
         person.introduce()
 ```
+
+### 通过类，批量产生对象
+```javascript
+
+	    // 批量产生对象，就是相当于创建一个类，然后通过类来创建实力对象, 通过new来创建一个对象
+        function Person() {
+            this.name = null;
+            this.age = null;
+            this.height = null;
+
+            this.study = function (subject) {
+                console.log('大家好， 我是' + this.name + '，身高' + this.height + '今年' + this.age + '岁.' + '我最喜欢的科目是' + subject);
+            };
+
+            this.favorite = function (favo) {
+                console.log('我的爱好是' + favo);
+            };
+        }
+
+        var person1 = new Person();
+        person1.name = 'La Bron James';
+        person1.age = 30;
+        person1.height = 2.06;
+
+        person1.favorite('篮球');
+        person1.study('体育');		
+
+```
+
+
+### JS Dom操作
+```html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS内置对象Window</title>
+    <script>
+        /*
+        *  window内置对象
+        *   1、所有的全局变量都是window的属性;
+        *   2、所有的全局函数都是window的方法
+        * */
+        var main = window.document.getElementById('main');
+        var  input = window.document.getElementsByTagName('input');
+
+        // 动态跳转
+        function goBaidu() {
+            window.location.href = 'https://www.baidu.com'
+        }
+
+        /*
+        * 内置对象 document 的作用
+        * 1、动态的获取当前页面中的所有的标签
+        * 2、动态的对获取的标签进行CRUD（增删改查)操作
+        * */
+
+        // 动态的插入文字或者标签
+        document.write('Hello World');
+        document.write('<input type="button" value="我是插入的按钮" onclick="goBaidu()">');
+
+        var flag = true
+
+        function updateImage() {
+            flag = !flag;
+            // 先获取到图片的标签
+            var imgs = document.getElementsByClassName('liuyifei');// 这个获取的是一个数组
+            var img = imgs[0];
+            if (flag) {
+                img.src = 'fei/fei1.jpg';
+            } else  {
+                img.src = 'fei/fei0.jpg';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="head"></div>
+    <div id="main"></div>
+    <div class="footer"></div>
+    <input type="button" value="按钮" onclick="goBaidu()">
+    <br>
+    <img src="fei/fei0.jpg" alt="" class="liuyifei" width="300px">
+    <input type="button" value="修改图片" onclick="updateImage()">
+</body>
+</html>
+
+```
